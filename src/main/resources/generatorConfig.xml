@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--jdbc 配置文件-->
+    <properties resource="application.properties"/>
+    <!--flat 表示一个表生成一个 实体类-->
+    <context id="mysql" defaultModelType="flat">
+
+        <!--jdbc 连接-->
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}" password="${jdbc.password}"/>
+
+        <!-- 生成实体类 -->
+        <javaModelGenerator targetPackage="com.ezreal.demo.entity" targetProject="src/main/java"/>
+
+        <!-- 生成mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!--生成dao 接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ezreal.demo.dao" targetProject="src/main/java"/>
+
+        <!--配置表信息 不自动生成Example-->
+        <table tableName="tb_shop" domainObjectName="Shop"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+    </context>
+
+</generatorConfiguration>
